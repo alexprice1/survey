@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import immutable from 'immutable';
-import { SELECT_ANSWER , GOT_QUESTION, SUBMIT_ANSWER_STATUS } from './actions.js';
+import { SELECT_ANSWER, GOT_QUESTION, SUBMIT_ANSWER_STATUS } from './actions.js';
 
 const initialState = immutable.Map({
   question: {
     title: '',
-    Answers: []
+    Answers: [],
   },
+  submitAnswerStatus: '',
 });
 
 export function applicationInformation(state = initialState, action = {}) {
@@ -20,8 +21,8 @@ export function applicationInformation(state = initialState, action = {}) {
     default:
       return state;
   }
-};
+}
 
 export default combineReducers({
-  applicationInformation
+  applicationInformation,
 });

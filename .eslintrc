@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
   "rules": {
-    "quotes": [2, "double"]
+    "new-cap": [2, {"capIsNewExceptions": ["immutable.Map", "immutable.List"]}],
+    "func-names": 0
   }
 }

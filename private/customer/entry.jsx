@@ -1,4 +1,3 @@
-'use strict';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Redirect } from 'react-router';
@@ -16,7 +15,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) }
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 const ConnectedAppContainer = connect(mapStateToProps, mapDispatchToProps)(AppContainer);
@@ -28,7 +27,7 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(reducers);
 
 const history = createBrowserHistory({
-  queryKey: false
+  queryKey: false,
 });
 
 ReactDOM.render(

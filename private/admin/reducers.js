@@ -2,23 +2,23 @@ import immutable from 'immutable';
 import { combineReducers } from 'redux';
 import { UPDATE_QUESTION_TITLE, UPDATE_ANSWER, ADD_ANSWER, REMOVE_ANSWER, GOT_QUESTIONS, GOT_QUESTION, SET_NEW_QUESTION_STATUS } from './actions.js';
 
+function newAnswer() {
+  return immutable.Map({
+    isCorrectQuestion: false,
+    answer: '',
+  });
+}
+
 const initialState = immutable.Map({
   newQuestion: immutable.Map({
     title: '',
     answers: immutable.List([
-      newAnswer()
-    ])
+      newAnswer(),
+    ]),
   }),
   questions: immutable.List(),
-  question: {}
+  question: {},
 });
-
-function newAnswer() {
-  return immutable.Map({
-    isCorrectQuestion: false,
-    answer: ''
-  });
-}
 
 export function applicationInformation(state = initialState, action = {}) {
   switch (action.type) {
@@ -40,8 +40,8 @@ export function applicationInformation(state = initialState, action = {}) {
     default:
       return state;
   }
-};
+}
 
 export default combineReducers({
-  applicationInformation
+  applicationInformation,
 });

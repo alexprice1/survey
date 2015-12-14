@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default class Dashboard extends React.Component {
-  render() { 
+export default class Admin extends React.Component {
+  render() {
     window.applicationInformation = this.props.applicationInformation;
     const routeComponent = React.cloneElement(this.props.children, {
       applicationInformation: this.props.applicationInformation,
       actions: this.props.actions,
-      params: this.props.params
+      params: this.props.params,
     });
     return (
       <div>
@@ -39,4 +39,11 @@ export default class Dashboard extends React.Component {
       </div>
     );
   }
+}
+
+Admin.propTypes = {
+  applicationInformation: React.PropTypes.object,
+  actions: React.PropTypes.object,
+  params: React.PropTypes.object,
+  children: React.PropTypes.node,
 };

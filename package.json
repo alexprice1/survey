@@ -4,7 +4,8 @@
   "description": "Basic survey app. Allows creation of new multiple choice questions.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "./node_modules/.bin/eslint --ext=js --ext=jsx --ignore-pattern public ./**"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
-    "history": "^1.13.1",
+    "history": "1.13.x",
     "immutable": "^3.7.5",
     "mustache-express": "^1.2.2",
     "mysql": "^2.9.0",

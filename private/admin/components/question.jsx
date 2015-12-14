@@ -6,18 +6,18 @@ export default class Question extends React.Component {
   }
 
   renderPercent(responseCount, totalResponses) {
-    if(!totalResponses || !responseCount) {
+    if (!totalResponses || !responseCount) {
       return '0%';
-    } else {
-      const percent = Math.floor(responseCount / totalResponses * 10000)/100;
-      return `${percent}%`;
     }
+
+    const percent = Math.floor(responseCount / totalResponses * 10000) / 100;
+    return `${percent}%`;
   }
 
   render() {
     const question = this.props.applicationInformation.get('question');
     const { totalResponses } = question;
-    const answers = ( question.Answers || []).map((answer, index) => {
+    const answers = (question.Answers || []).map((answer, index) => {
       return (
         <tr key={index}>
           <td>{answer.answer}</td>
@@ -30,7 +30,7 @@ export default class Question extends React.Component {
     return (
       <div>
         <h3> {question.title} </h3>
-        <table style={{width: '100%'}}>
+        <table style={{ width: '100%' }}>
           <thead>
             <tr>
               <th>Answer</th>
@@ -45,4 +45,10 @@ export default class Question extends React.Component {
       </div>
     );
   }
+}
+
+Question.propTypes = {
+  applicationInformation: React.PropTypes.object,
+  actions: React.PropTypes.object,
+  params: React.PropTypes.object,
 };

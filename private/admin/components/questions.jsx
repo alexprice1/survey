@@ -7,7 +7,7 @@ export default class Questions extends React.Component {
   }
 
   render() {
-    const questions = this.props.applicationInformation.get('questions').map(function(question, index) {
+    const questions = this.props.applicationInformation.get('questions').map(function (question, index) {
       return (
         <li key={index}><Link to={`/questions/${question.id}`}>{question.title}</Link></li>
       );
@@ -22,4 +22,9 @@ export default class Questions extends React.Component {
       </div>
     );
   }
+}
+
+Questions.propTypes = {
+  applicationInformation: React.PropTypes.object,
+  actions: React.PropTypes.object,
 };

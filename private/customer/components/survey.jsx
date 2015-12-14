@@ -27,13 +27,16 @@ export default class Customer extends React.Component {
       return (
         <div key={index}>
           <label>
-            <input type='radio' name="answer" checked={selectedAnswerId === answer.id} onClick={() => actions.selectAnswer(answer.id)}/> {answer.answer}
+            <input type="radio" name="answer" checked={selectedAnswerId === answer.id} onClick={() => actions.selectAnswer(answer.id)}/> {answer.answer}
           </label>
         </div>
       );
     });
-    let submitAnswerMessage, submitAnswerDisabled, nextQuestionButton;
-    switch(submitAnswerStatus) {
+    let submitAnswerMessage;
+    let submitAnswerDisabled;
+    let nextQuestionButton;
+
+    switch (submitAnswerStatus) {
       case 'pending':
         submitAnswerDisabled = true;
         submitAnswerMessage = 'Submitting...';
@@ -52,6 +55,10 @@ export default class Customer extends React.Component {
         submitAnswerDisabled = false;
         submitAnswerMessage = 'There was an error submitting your answer. Try again.';
         break;
+      default:
+        submitAnswerDisabled = false;
+        submitAnswerMessage = 'There was an error submitting your answer. Try again.';
+        break;
     }
 
     return (
@@ -63,13 +70,19 @@ export default class Customer extends React.Component {
             <div className="columns small-12 medium-6">
               <button className="button" disabled={submitAnswerDisabled}>Submit Answer</button> {submitAnswerMessage}
             </div>
-            <div className="columns small-12 medium-6" style={{textAlign: 'right'}}>
+            <div className="columns small-12 medium-6" style={{ textAlign: 'right' }}>
               {nextQuestionButton}
             </div>
           </div>
-           
         </form>
       </div>
     );
   }
+}
+
+Customer.propTypes = {
+  selectedAnswerId: React.PropTypes.any,
+  actions: React.PropTypes.object,
+  submitAnswerStatus: React.PropTypes.string,
+  question: React.PropTypes.object,
 };

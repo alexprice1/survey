@@ -7,7 +7,7 @@ export default class AppContainer extends React.Component {
       question: applicationInformation.get('question'),
       submitAnswerStatus: applicationInformation.get('submitAnswerStatus'),
       selectedAnswerId: applicationInformation.get('selectedAnswerId'),
-      actions: this.props.actions
+      actions: this.props.actions,
     });
 
     return (
@@ -34,4 +34,10 @@ export default class AppContainer extends React.Component {
       </div>
     );
   }
+}
+
+AppContainer.propTypes = {
+  applicationInformation: React.PropTypes.object,
+  actions: React.PropTypes.object,
+  children: React.PropTypes.node,
 };

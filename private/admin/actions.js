@@ -7,8 +7,10 @@ export const REMOVE_ANSWER = 'REMOVE_ANSWER';
 export const CREATE_QUESTION_FINISHED = 'CREATE_QUESTION_FINISHED';
 export const GOT_QUESTIONS = 'GOT_QUESTIONS';
 export const GOT_QUESTION = 'GOT_QUESTION';
+export const SET_NEW_QUESTION_STATUS = 'SET_NEW_QUESTION_STATUS';
 
 export function updateQuestionTitle(questionTitle) {
+  console.log('update', new Error().stack);
   return {
     type: UPDATE_QUESTION_TITLE,
     questionTitle
@@ -76,14 +78,38 @@ export function getQuestion(questionId) {
   }
 };
 
+export function setNewQuestionStatus(status) {
+  return {
+    type: SET_NEW_QUESTION_STATUS,
+    status
+  };
+};
+
 export function createQuestion() {
   return function(dispatcher, getState) {
     const question = getState().applicationInformation.get('newQuestion').toJS();
+
+    if(!question.title) {
+      return dispatcher(setNewQuestionStatus('noTitle'));
+    }
+
+    for(let i = 0; i < question.answers.length; i++) {
+      if(!question.answers[i].answer) {
+        return dispatcher(setNewQuestionStatus('blankAnswer')); 
+      }
+    }
+
+    dispatcher(setNewQuestionStatus('pending'));
+
     superagent
       .post('/api/questions')
       .send(question)
       .end(function(err, response) {
-        console.log('done', arguments);
+        if(err) {
+          dispatcher(setNewQuestionStatus('error'));
+        } else {
+          dispatcher(setNewQuestionStatus('finished'));
+        }
       });
   };
 };

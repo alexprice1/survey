@@ -7,12 +7,9 @@ module.exports = {
   output: {
       devtoolModuleFilenameTemplate: '[resourcePath]',
       devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
-      // this is our app/assets/javascripts-old directory, which is part of the Sprockets pipeline
-      path: './public/js/',
-      // the filename of the compiled bundle, e.g. app/assets/javascripts-old/bundle.js
-      filename: '[name].js',
-      // if the webpack code-splitting feature is enabled, this is the path it'll use to download bundles
-      publicPath: '/assets'
+      path: './public/',
+      filename: '[name]/js/index.js',
+      publicPath: '/public'
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

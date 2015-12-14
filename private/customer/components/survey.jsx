@@ -3,34 +3,71 @@ import React from 'react';
 export default class Customer extends React.Component {
   constructor(props) {
     super(props);
-    this.submitAnswer = this.submitAnswer.bind(this);
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleNextQuestionClick = this._handleNextQuestionClick.bind(this);
   }
 
-  submitAnswer(event) {
+  componentDidMount() {
+    this.props.actions.getQuestion();
+  }
+
+  _handleFormSubmit(event) {
     event.preventDefault();
+    this.props.actions.submitAnswer();
+  }
+
+  _handleNextQuestionClick(event) {
+    event.preventDefault();
+    this.props.actions.getQuestion();
   }
 
   render() {
-    const { question, actions, selectedAnswerId } = this.props;
-    const answers = question.answers.map((answer, index) => {
+    const { question, selectedAnswerId, actions, submitAnswerStatus } = this.props;
+    const answers = question.Answers.map((answer, index) => {
       return (
         <div key={index}>
           <label>
             <input type='radio' name="answer" checked={selectedAnswerId === answer.id} onClick={() => actions.selectAnswer(answer.id)}/> {answer.answer}
           </label>
-          <br/>
         </div>
       );
     });
+    let submitAnswerMessage, submitAnswerDisabled, nextQuestionButton;
+    switch(submitAnswerStatus) {
+      case 'pending':
+        submitAnswerDisabled = true;
+        submitAnswerMessage = 'Submitting...';
+        break;
+      case 'finished':
+        submitAnswerDisabled = true;
+        submitAnswerMessage = 'Answer Submitted!';
+
+        nextQuestionButton = (
+          <button className="button success" onClick={this._handleNextQuestionClick}>
+            Next Question
+          </button>
+        );
+        break;
+      case 'error':
+        submitAnswerDisabled = false;
+        submitAnswerMessage = 'There was an error submitting your answer. Try again.';
+        break;
+    }
 
     return (
       <div>
-        <h2>Welcome to our amazing Survey! Here is your first question.</h2>
-        <form onSubmit={this.submitAnswer}>
-          <h4>{question.question}</h4>
+        <form onSubmit={this._handleFormSubmit}>
+          <h3>{question.title}</h3>
           {answers}
-          <br/>
-          <button>Submit Answer</button>
+          <div className="row">
+            <div className="columns small-12 medium-6">
+              <button className="button" disabled={submitAnswerDisabled}>Submit Answer</button> {submitAnswerMessage}
+            </div>
+            <div className="columns small-12 medium-6" style={{textAlign: 'right'}}>
+              {nextQuestionButton}
+            </div>
+          </div>
+           
         </form>
       </div>
     );

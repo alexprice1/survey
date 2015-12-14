@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Survey</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/foundation/6.0.5/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/app.css"/>
+  </head>
+  <body>
+    <div class="top-bar">
+      <ul class="dropdown menu">
+        <li class="menu-text">Survey</li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="small-12 medium-5 columns">
+        <h4>Login</h4>
+        {{errorMessage}}
+        <form action="/login" method="post">
+          <label>
+            Username
+            <br/>
+            <input type="text" name="username"/>
+          </label>
+          <br/>
+          <br/>
+          <label>
+            Password
+            <br/>
+            <input type="password" name="password"/>
+          </label>
+          <div class="login-button-container">
+            <button class="button">Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="small-12 medium-2 columns login-or-text">
+        Or
+      </div>
+      <div class="small-12 medium-5 columns login-as-guest">
+        <form action="/login/guest" method="post">
+          <button class="button large"> Login As Guest </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

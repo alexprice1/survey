@@ -37,11 +37,11 @@ ReactDOM.render(
   <Provider store={store}>
       <Router history={history}>
         <Route component={ConnectedAdmin}>
-          <Route component={NewQuestion} path="/"/>
+          <Route component={NewQuestion} path="/new-question"/>
           <Route component={Questions} path="/questions"/>
           <Route component={Question} path="/questions/:id"/>
         </Route>
-        <Redirect from="*" to="/" />
+        <Redirect from="*" to="/questions" />
       </Router>
     </Provider>,
   document.getElementById('react-entry')

@@ -14,6 +14,9 @@ mysql.server start
 # Install Webpack
 npm install webpack -g
 
+# Install ESLint
+npm install -g eslint
+
 # Configure Mysql
 mysql -uroot
 CREATE DATABASE survey;

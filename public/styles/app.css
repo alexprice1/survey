@@ -1,0 +1,38 @@
+/*
+  small: 0px,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+*/
+
+@media screen and (min-width:  640px) {
+  .login-or-text, .login-as-guest {
+    line-height: 264px;
+    vertical-align: middle;
+  }
+}
+
+@media screen and (max-width:  639px) {
+  .login-or-text {
+    padding: 20px;
+  }
+}
+
+.login-or-text {
+  text-align: center;
+}
+
+.login-button-container {
+  text-align: right;
+}
+
+.login-button-container button {
+  text-align: right;
+  margin: 0;
+}
+
+.login-as-guest button {
+  margin: 0;
+  width: 100%;
+}

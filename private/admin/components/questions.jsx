@@ -15,7 +15,7 @@ export default class Questions extends React.Component {
 
     return (
       <div>
-        <h2> Questions </h2>
+        <h3> Questions </h3>
         <ul>
           {questions}
         </ul>

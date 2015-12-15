@@ -7,12 +7,12 @@ function createResponses(req, res) {
   models.Response.create({
     AnswerId: req.body.answerId,
     UserId: req.session.user.id,
-    QuestionId: req.body.questionId
-  }).then(function() {
+    QuestionId: req.body.questionId,
+  }).then(function () {
     res.send();
   }).catch(console.error);
 }
 
 module.exports = {
-  create: createResponses
+  create: createResponses,
 };

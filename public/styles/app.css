@@ -1,10 +1,30 @@
 /*
+  Screen sizes
   small: 0px,
   medium: 640px,
   large: 1024px,
   xlarge: 1200px,
   xxlarge: 1440px,
 */
+
+/* Navigation */
+
+@media screen and (max-width:  639px) {
+  .top-bar-left {
+    float: left;
+  }
+
+  .top-bar-left li {
+    padding: 1px;
+  }
+
+  .top-bar-right {
+    float: right;
+  }
+}
+
+
+/* Login */
 
 @media screen and (min-width:  640px) {
   .login-or-text, .login-as-guest {
@@ -34,5 +54,17 @@
 
 .login-as-guest button {
   margin: 0;
+  width: 100%;
+}
+
+/* Shared */
+
+.button-no-margin {
+  margin: 0;
+}
+
+/* Admin */
+
+.admin-full-width {
   width: 100%;
 }

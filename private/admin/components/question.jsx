@@ -30,7 +30,7 @@ export default class Question extends React.Component {
     return (
       <div>
         <h3> {question.title} </h3>
-        <table style={{ width: '100%' }}>
+        <table className="admin-full-width">
           <thead>
             <tr>
               <th>Answer</th>

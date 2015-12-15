@@ -14,7 +14,7 @@ export default class NewQuestion extends React.Component {
           <div className="input-group-button">
             <button className="button alert" disabled={answers.size === 1} onClick={() => actions.removeAnswer(index)}>-</button>
           </div>
-          <input style={{ margin: '0' }} type="text" value={answer.get('answer')} onChange={(event) => actions.updateAnswer(event.target.value, index)}/>
+          <input className="button-no-margin" type="text" value={answer.get('answer')} onChange={(event) => actions.updateAnswer(event.target.value, index)}/>
         </div>
       );
     });
@@ -38,7 +38,7 @@ export default class NewQuestion extends React.Component {
         break;
       case 'finished':
         newQuestionMessage = 'Created!';
-        disableCreateQuestion = true;
+        disableCreateQuestion = false;
         break;
       default:
         disableCreateQuestion = false;
@@ -61,15 +61,15 @@ export default class NewQuestion extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="columns small-12 medium-6">
+          <div className="columns small-2">
             <button className="button success" onClick={actions.addAnswer}>+</button>
           </div>
-          <div className="columns small-12 medium-6" style={{ textAlign: 'right' }}>
-            <button className="button" onClick={actions.createQuestion} style={{ margin: '0' }}> Create Question </button>
+          <div className="columns small-10 text-right">
+            <button className="button button-no-margin" disabled={disableCreateQuestion} onClick={actions.createQuestion}> Create Question </button>
           </div>
         </div>
         <div className="row">
-          <div className="columns small-12" style={{ textAlign: 'right' }}>
+          <div className="columns small-12 text-right">
              {newQuestionMessage}
           </div>
         </div>

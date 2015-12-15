@@ -3,6 +3,7 @@ import request from 'superagent';
 export const SELECT_ANSWER = 'SELECT_ANSWER';
 export const GOT_QUESTION = 'GOT_QUESTION';
 export const SUBMIT_ANSWER_STATUS = 'SUBMIT_ANSWER_STATUS';
+export const SET_QUESTION_FETCH_STATUS = 'SET_QUESTION_FETCH_STATUS';
 
 export function selectAnswer(selectedAnswerId) {
   return {
@@ -11,25 +12,28 @@ export function selectAnswer(selectedAnswerId) {
   };
 }
 
-export function gotQuestion(question, error) {
+export function gotQuestion(question) {
   return {
     type: GOT_QUESTION,
-    error,
     question,
+  };
+}
+
+export function questionFetchStatus(status) {
+  return {
+    type: SET_QUESTION_FETCH_STATUS,
+    status,
   };
 }
 
 export function getQuestion() {
   return function (dispatcher) {
+    dispatcher(questionFetchStatus('pending'));
     request
       .get('/api/questions/random')
       .end(function (error, response) {
         if (error) {
-          if (response.status === 404) {
-            dispatcher(gotQuestion(null));
-          } else {
-            dispatcher(gotQuestion(null, true));
-          }
+          dispatcher(gotQuestion(null));
         } else {
           dispatcher(gotQuestion(response.body));
         }

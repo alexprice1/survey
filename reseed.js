@@ -1,21 +1,14 @@
 const models = require('./models');
 
-dropTables().then(function() {
-  return seedData();
-}).then(function() {
-  console.log('Done reseed data!');
-  models.sequelize.close();
-}).catch(console.error);
-
 function dropTables() {
-  return models.Response.drop().then(function() {
+  return models.Response.drop().then(function () {
     return models.Answer.drop();
-  }).then(function() {
+  }).then(function () {
     return models.Question.drop();
-  }).then(function() {
+  }).then(function () {
     return models.User.drop();
-  }).then(function() {
-    return models.sequelize.sync()
+  }).then(function () {
+    return models.sequelize.sync();
   });
 }
 
@@ -24,12 +17,19 @@ function seedData() {
     models.User.create({
       type: 'admin',
       username: 'admin',
-      password: 'password'
+      password: 'password',
     }),
     models.User.create({
       type: 'admin',
       username: 'admin2',
-      password: 'password'
-    })
+      password: 'password',
+    }),
   ]);
 }
+
+dropTables().then(function () {
+  return seedData();
+}).then(function () {
+  console.log('Done reseeding data!');
+  models.sequelize.close();
+}).catch(console.error);

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "./node_modules/.bin/eslint --ext=js --ext=jsx --ignore-pattern public ./**"
+    "eslint": "./node_modules/.bin/eslint --ext=js --ext=jsx ./**"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chapinkapa/survey/issues"
+  },
+  "engines": {
+    "node": "4.2.1"
   },
   "homepage": "https://github.com/chapinkapa/survey#readme",
   "dependencies": {

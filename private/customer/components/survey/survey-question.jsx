@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Customer extends React.Component {
+export default class SurveyQuestion extends React.Component {
   constructor(props) {
     super(props);
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
@@ -57,7 +57,6 @@ export default class Customer extends React.Component {
         break;
       default:
         submitAnswerDisabled = false;
-        submitAnswerMessage = 'There was an error submitting your answer. Try again.';
         break;
     }
 
@@ -70,7 +69,7 @@ export default class Customer extends React.Component {
             <div className="columns small-12 medium-6">
               <button className="button" disabled={submitAnswerDisabled}>Submit Answer</button> {submitAnswerMessage}
             </div>
-            <div className="columns small-12 medium-6" style={{ textAlign: 'right' }}>
+            <div className="columns small-12 medium-6" className="text-right">
               {nextQuestionButton}
             </div>
           </div>
@@ -80,7 +79,7 @@ export default class Customer extends React.Component {
   }
 }
 
-Customer.propTypes = {
+SurveyQuestion.propTypes = {
   selectedAnswerId: React.PropTypes.any,
   actions: React.PropTypes.object,
   submitAnswerStatus: React.PropTypes.string,

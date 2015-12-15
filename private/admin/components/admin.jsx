@@ -27,13 +27,13 @@ export default class Admin extends React.Component {
             <ul className="menu">
               <li>
                 <form action="/logout" method="post">
-                  <button type="submit" className="button">Logout</button>
+                  <button type="submit" className="button button-no-margin">Logout</button>
                 </form>
               </li>
             </ul>
           </div>
         </div>
-        <div className="row">
+        <div>
           {routeComponent}
         </div>
       </div>

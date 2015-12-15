@@ -12,6 +12,14 @@ export default class Questions extends React.Component {
         <li key={index}><Link to={`/questions/${question.id}`}>{question.title}</Link></li>
       );
     });
+    let noQuestionsNode;
+    if (!questions.size) {
+      noQuestionsNode = (
+        <div>
+          You have not create any questions yet! <Link to="/new-question">Create A Question</Link>.
+        </div>
+      );
+    }
 
     return (
       <div>
@@ -19,6 +27,7 @@ export default class Questions extends React.Component {
         <ul>
           {questions}
         </ul>
+        {noQuestionsNode}
       </div>
     );
   }

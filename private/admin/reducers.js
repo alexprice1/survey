@@ -1,22 +1,25 @@
-import immutable from 'immutable';
+import Immutable from 'immutable';
 import { combineReducers } from 'redux';
 import { UPDATE_QUESTION_TITLE, UPDATE_ANSWER, ADD_ANSWER, REMOVE_ANSWER, GOT_QUESTIONS, GOT_QUESTION, SET_NEW_QUESTION_STATUS } from './actions.js';
 
 function newAnswer() {
-  return immutable.Map({
-    isCorrectQuestion: false,
+  return Immutable.Map({
     answer: '',
   });
 }
 
-const initialState = immutable.Map({
-  newQuestion: immutable.Map({
+function defaultNewQuestion() {
+  return Immutable.Map({
     title: '',
-    answers: immutable.List([
+    answers: Immutable.List([
       newAnswer(),
     ]),
-  }),
-  questions: immutable.List(),
+  });
+}
+
+const initialState = Immutable.Map({
+  newQuestion: defaultNewQuestion(),
+  questions: Immutable.List(),
   question: {},
 });
 
@@ -32,11 +35,12 @@ export function applicationInformation(state = initialState, action = {}) {
     case REMOVE_ANSWER:
       return state.removeIn(['newQuestion', 'answers', action.answerIndex]);
     case GOT_QUESTIONS:
-      return state.set('questions', immutable.List(action.questions));
+      return state.set('questions', Immutable.List(action.questions));
     case GOT_QUESTION:
       return state.set('question', action.question);
     case SET_NEW_QUESTION_STATUS:
-      return state.set('newQuestionStatus', action.status);
+      const newState = action.status === 'finished' ? state.set('newQuestion', defaultNewQuestion()) : state;
+      return newState.set('newQuestionStatus', action.status);
     default:
       return state;
   }

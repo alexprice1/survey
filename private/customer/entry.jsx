@@ -5,10 +5,10 @@ import reducers from './reducers';
 import * as actions from './actions';
 import { createStore, bindActionCreators, applyMiddleware } from 'redux';
 import { Provider, connect } from 'react-redux';
-import createBrowserHistory from 'history/lib/createHashHistory';
 import AppContainer from './components/app-container';
-import Customer from './components/survey';
+import Customer from './components/survey/survey';
 import thunk from 'redux-thunk';
+import createBrowserHistory from 'history/lib/createHashHistory';
 
 function mapStateToProps(state) {
   return state;

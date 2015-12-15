@@ -6,15 +6,15 @@ const sequelize = new Sequelize('survey', 'survey-user', 'password');
 const User = sequelize.define('User', {
   type: Sequelize.ENUM('admin', 'customer'),
   username: Sequelize.STRING,
-  password: Sequelize.STRING
+  password: Sequelize.STRING,
 });
 
 const Question = sequelize.define('Question', {
-  title: Sequelize.STRING
+  title: Sequelize.STRING,
 });
 
 const Answer = sequelize.define('Answer', {
-  answer: Sequelize.STRING
+  answer: Sequelize.STRING,
 });
 
 const Response = sequelize.define('Response', {});
@@ -39,5 +39,5 @@ module.exports = {
   Response,
   Question,
   User,
-  sequelize
+  sequelize,
 };

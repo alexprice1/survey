@@ -7,6 +7,7 @@ export default class AppContainer extends React.Component {
       question: applicationInformation.get('question'),
       submitAnswerStatus: applicationInformation.get('submitAnswerStatus'),
       selectedAnswerId: applicationInformation.get('selectedAnswerId'),
+      questionFetchStatus: applicationInformation.get('questionFetchStatus'),
       actions: this.props.actions,
     });
 
@@ -28,7 +29,7 @@ export default class AppContainer extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row">
+        <div>
           {routeComponent}
         </div>
       </div>

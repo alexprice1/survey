@@ -1,7 +1,8 @@
 {
   "extends": "airbnb",
   "rules": {
-    "new-cap": [2, {"capIsNewExceptions": ["immutable.Map", "immutable.List"]}],
-    "func-names": 0
+    "new-cap": [2, {"capIsNewExceptions": ["Immutable.Map", "Immutable.List", "Sequelize.ENUM", "Sequelize.STRING"]}],
+    "func-names": 0,
+    "strict": 0
   }
 }

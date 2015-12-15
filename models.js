@@ -1,9 +1,8 @@
 'use strict';
 
-const Sequelize = require('sequelize');
-
 const sqlURI = process.env.SQL_DATABASE_URL || 'mysql://survey-user:password@localhost/survey';
 
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize(sqlURI);
 
 const User = sequelize.define('User', {

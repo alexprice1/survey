@@ -8,7 +8,8 @@
     "build": "webpack",
     "develop": "webpack --watch",
     "start": "node server.js",
-    "eslint": "./node_modules/.bin/eslint --ext=js --ext=jsx ./**"
+    "eslint": "./node_modules/.bin/eslint --ext=js --ext=jsx ./**",
+    "reseed": "node reseed"
   },
   "repository": {
     "type": "git",

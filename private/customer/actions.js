@@ -50,13 +50,15 @@ export function submitAnswerStatus(status) {
 
 export function submitAnswer() {
   return function (dispatcher, getState) {
-    dispatcher(submitAnswerStatus('pending'));
     const applicationInformation = getState().applicationInformation;
     const selectedAnswerId = applicationInformation.get('selectedAnswerId');
     const questionId = applicationInformation.get('question').id;
     if (!selectedAnswerId) {
-      return;
+      return dispatcher(submitAnswerStatus('noAnswer'));;
     }
+
+    dispatcher(submitAnswerStatus('pending'));
+
     request
       .post('/api/responses')
       .send({

@@ -33,7 +33,7 @@ export default class Admin extends React.Component {
             </ul>
           </div>
         </div>
-        <div>
+        <div className="container">
           {routeComponent}
         </div>
       </div>

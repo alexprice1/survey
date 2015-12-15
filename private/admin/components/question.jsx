@@ -28,20 +28,22 @@ export default class Question extends React.Component {
     });
 
     return (
-      <div>
-        <h3> {question.title} </h3>
-        <table className="admin-full-width">
-          <thead>
-            <tr>
-              <th>Answer</th>
-              <th>Responses</th>
-              <th>Percent</th>
-            </tr>
-          </thead>
-          <tbody>
-            {answers}
-          </tbody>
-        </table>
+      <div className="row">
+        <div className="columns small-12">
+          <h3> {question.title} </h3>
+          <table className="admin-full-width">
+            <thead>
+              <tr>
+                <th>Answer</th>
+                <th>Responses</th>
+                <th>Percent</th>
+              </tr>
+            </thead>
+            <tbody>
+              {answers}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

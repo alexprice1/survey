@@ -32127,13 +32127,15 @@
 	
 	function submitAnswer() {
 	  return function (dispatcher, getState) {
-	    dispatcher(submitAnswerStatus('pending'));
 	    var applicationInformation = getState().applicationInformation;
 	    var selectedAnswerId = applicationInformation.get('selectedAnswerId');
 	    var questionId = applicationInformation.get('question').id;
 	    if (!selectedAnswerId) {
-	      return;
+	      return dispatcher(submitAnswerStatus('noAnswer'));;
 	    }
+	
+	    dispatcher(submitAnswerStatus('pending'));
+	
 	    _superagent2.default.post('/api/responses').send({
 	      answerId: selectedAnswerId,
 	      questionId: questionId
@@ -32236,12 +32238,8 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'small-12' },
-	            routeComponent
-	          )
+	          { className: 'container' },
+	          routeComponent
 	        )
 	      );
 	    }
@@ -32392,11 +32390,6 @@
 	  }
 	
 	  _createClass(SurveyQuestion, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      this.props.actions.getQuestion();
-	    }
-	  }, {
 	    key: "_handleFormSubmit",
 	    value: function _handleFormSubmit(event) {
 	      event.preventDefault();
@@ -32451,6 +32444,10 @@
 	            "Next Question"
 	          );
 	          break;
+	        case 'noAnswer':
+	          submitAnswerDisabled = false;
+	          submitAnswerMessage = 'You must select an answer.';
+	          break;
 	        case 'error':
 	          submitAnswerDisabled = false;
 	          submitAnswerMessage = 'There was an error submitting your answer. Try again.';
@@ -32467,11 +32464,19 @@
 	          "form",
 	          { onSubmit: this._handleFormSubmit },
 	          _react2.default.createElement(
-	            "h3",
-	            null,
-	            question.title
+	            "div",
+	            { className: "row" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "columns small-12" },
+	              _react2.default.createElement(
+	                "h3",
+	                null,
+	                question.title
+	              ),
+	              answers
+	            )
 	          ),
-	          answers,
 	          _react2.default.createElement(
 	            "div",
 	            { className: "row" },

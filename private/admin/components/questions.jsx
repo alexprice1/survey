@@ -22,12 +22,14 @@ export default class Questions extends React.Component {
     }
 
     return (
-      <div>
-        <h3> Questions </h3>
-        <ul>
-          {questions}
-        </ul>
-        {noQuestionsNode}
+      <div className="row">
+        <div className="columns small-12">
+          <h3> Questions </h3>
+          <ul className="admin-ordered-list">
+            {questions}
+          </ul>
+          {noQuestionsNode}
+        </div>
       </div>
     );
   }

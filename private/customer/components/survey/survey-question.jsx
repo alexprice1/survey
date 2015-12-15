@@ -7,10 +7,6 @@ export default class SurveyQuestion extends React.Component {
     this._handleNextQuestionClick = this._handleNextQuestionClick.bind(this);
   }
 
-  componentDidMount() {
-    this.props.actions.getQuestion();
-  }
-
   _handleFormSubmit(event) {
     event.preventDefault();
     this.props.actions.submitAnswer();
@@ -51,6 +47,10 @@ export default class SurveyQuestion extends React.Component {
           </button>
         );
         break;
+      case 'noAnswer':
+        submitAnswerDisabled = false;
+        submitAnswerMessage = 'You must select an answer.';
+        break;
       case 'error':
         submitAnswerDisabled = false;
         submitAnswerMessage = 'There was an error submitting your answer. Try again.';
@@ -63,8 +63,12 @@ export default class SurveyQuestion extends React.Component {
     return (
       <div>
         <form onSubmit={this._handleFormSubmit}>
-          <h3>{question.title}</h3>
-          {answers}
+          <div className="row">
+            <div className="columns small-12">
+              <h3>{question.title}</h3>
+              {answers}
+            </div>
+          </div>
           <div className="row">
             <div className="columns small-12 medium-6">
               <button className="button" disabled={submitAnswerDisabled}>Submit Answer</button> {submitAnswerMessage}

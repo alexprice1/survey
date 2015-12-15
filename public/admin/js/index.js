@@ -32303,7 +32303,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'container' },
 	          routeComponent
 	        )
 	      );
@@ -32558,18 +32558,22 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'row' },
 	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          ' Questions '
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          questions
-	        ),
-	        noQuestionsNode
+	          'div',
+	          { className: 'columns small-12' },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            ' Questions '
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'admin-ordered-list' },
+	            questions
+	          ),
+	          noQuestionsNode
+	        )
 	      );
 	    }
 	  }]);
@@ -32664,44 +32668,48 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'row' },
 	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          ' ',
-	          question.title,
-	          ' '
-	        ),
-	        _react2.default.createElement(
-	          'table',
-	          { className: 'admin-full-width' },
+	          'div',
+	          { className: 'columns small-12' },
 	          _react2.default.createElement(
-	            'thead',
+	            'h3',
 	            null,
-	            _react2.default.createElement(
-	              'tr',
-	              null,
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Answer'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Responses'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Percent'
-	              )
-	            )
+	            ' ',
+	            question.title,
+	            ' '
 	          ),
 	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            answers
+	            'table',
+	            { className: 'admin-full-width' },
+	            _react2.default.createElement(
+	              'thead',
+	              null,
+	              _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Answer'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Responses'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Percent'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'tbody',
+	              null,
+	              answers
+	            )
 	          )
 	        )
 	      );

@@ -29,10 +29,8 @@ export default class AppContainer extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="row">
-          <div className="small-12">
-            {routeComponent}
-          </div>
+        <div className="container">
+          {routeComponent}
         </div>
       </div>
     );

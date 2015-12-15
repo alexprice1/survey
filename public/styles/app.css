@@ -63,7 +63,16 @@
   margin: 0;
 }
 
+.container {
+  padding: 15px;
+}
+
 /* Admin */
+
+ul.admin-ordered-list {
+  margin-left: 20px;
+  padding-left: 40px;
+}
 
 .admin-full-width {
   width: 100%;

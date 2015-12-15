@@ -1,5 +1,6 @@
-Survey App
--------------
+# Survey App
+
+
 
 ## Setup Environment
 
@@ -49,7 +50,7 @@ npm install -g eslint;
 
 ## Start Build
 
-You have to run both webpack and the node server.
+You have to run both webpack and the node server. Also, make sure mysql is running.
 
 ### Node
 ```
@@ -63,7 +64,7 @@ npm run develop;
 ```
 
 ## Run Server
-As long as you have built the project before, you only have to run node.
+As long as you have built the project before, you only have to run node and have mysql running.
 ```
 npm run start;
 ```

@@ -11,7 +11,6 @@ function createSession(req, res) {
   }).then(function (user) {
     if (user) {
       req.session.user = user.toJSON();
-      // console.log(req.session.user);
       req.session.save(function () {
         res.redirect(`/${user.type}`);
       });

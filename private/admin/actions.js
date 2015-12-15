@@ -62,7 +62,7 @@ export function getQuestions() {
     request
       .get('/api/questions')
       .end(function (err, response) {
-        dispatcher(gotQuestions(response.body));
+        if (!err) dispatcher(gotQuestions(response.body));
       });
   };
 }
@@ -72,7 +72,7 @@ export function getQuestion(questionId) {
     request
       .get(`/api/questions/results/${questionId}`)
       .end(function (err, response) {
-        dispatcher(gotQuestion(response.body));
+        if (!err) dispatcher(gotQuestion(response.body));
       });
   };
 }

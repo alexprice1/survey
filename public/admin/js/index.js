@@ -30191,7 +30191,7 @@
 	function getQuestions() {
 	  return function (dispatcher) {
 	    _superagent2.default.get('/api/questions').end(function (err, response) {
-	      dispatcher(gotQuestions(response.body));
+	      if (!err) dispatcher(gotQuestions(response.body));
 	    });
 	  };
 	}
@@ -30199,7 +30199,7 @@
 	function getQuestion(questionId) {
 	  return function (dispatcher) {
 	    _superagent2.default.get('/api/questions/results/' + questionId).end(function (err, response) {
-	      dispatcher(gotQuestion(response.body));
+	      if (!err) dispatcher(gotQuestion(response.body));
 	    });
 	  };
 	}

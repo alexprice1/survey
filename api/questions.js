@@ -60,7 +60,9 @@ function showQuestionWithResults(req, res) {
     question.totalResponses = totalResponses;
 
     res.send(question);
-  }).catch(console.error);
+  }).catch(function () {
+    res.sendStatus(500);
+  });
 }
 
 function showRandomQuestion(req, res) {
@@ -94,7 +96,9 @@ function showRandomQuestion(req, res) {
     }
 
     res.send(question.toJSON());
-  }).catch(console.error);
+  }).catch(function () {
+    res.sendStatus(500);
+  });
 }
 
 module.exports = {

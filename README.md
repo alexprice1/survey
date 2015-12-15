@@ -1,31 +1,76 @@
-# Survey
+Survey App
+-------------
 
-# Install Homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+## Setup Environment
 
-# Install node
+### Install Homebrew
 
-# Install mysql
-brew update && brew update
-brew install mysql
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+```
 
-# Start mysql
-mysql.server start
+### Install Node
 
-# Install Webpack
-npm install webpack -g
+#### Install nvm
+Follow directions to install [nvm](https://github.com/creationix/nvm#install-script).
 
-# Install ESLint
-npm install -g eslint
+#### Install Node
 
-# Configure Mysql
-mysql -uroot
+```
+nvm install v4.2.3;
+nvm alias default  v4.2.3;
+```
+
+### Mysql
+
+#### Install Mysql
+```
+brew install mysql;
+```
+#### Start mysql
+```
+mysql.server start;
+```
+#### Create mysql user
+```
+mysql -uroot;
 CREATE DATABASE survey;
 GRANT ALL ON survey.* TO 'survey-user'@'localhost' IDENTIFIED BY 'password';
 exit;
+```
+### Install Webpack
+```
+npm install webpack -g;
+```
+### Install ESLint
+```
+npm install -g eslint;
+```
 
-# How to login as survey-user
-mysql -u survey-user -p
-# Enter 'password' as the password
+## Start Build
+
+You have to run both webpack and the node server.
+
+### Node
+```
+npm run start;
+```
 
 
+### Webpack
+```
+npm run develop;
+```
+
+## Run Server
+As long as you have built the project before, you only have to run node.
+```
+npm run start;
+```
+
+## ESLint
+We are using airbnb's [styleguide](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) for our linting.
+
+```
+npm run eslint;
+```

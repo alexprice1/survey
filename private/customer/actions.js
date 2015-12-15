@@ -54,7 +54,7 @@ export function submitAnswer() {
     const selectedAnswerId = applicationInformation.get('selectedAnswerId');
     const questionId = applicationInformation.get('question').id;
     if (!selectedAnswerId) {
-      return dispatcher(submitAnswerStatus('noAnswer'));;
+      return dispatcher(submitAnswerStatus('noAnswer'));
     }
 
     dispatcher(submitAnswerStatus('pending'));

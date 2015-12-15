@@ -1,7 +1,10 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('survey', 'survey-user', 'password');
+
+const sqlURI = process.env.SQL_DATABASE_URL || 'mysql://survey-user:password@localhost/survey';
+
+const sequelize = new Sequelize(sqlURI);
 
 const User = sequelize.define('User', {
   type: Sequelize.ENUM('admin', 'customer'),

@@ -20,6 +20,7 @@ function createSession(req, res) {
       });
     }
   }).catch(function () {
+    console.log(arguments);
     res.render('login', {
       errorMessage: 'Error logging in, try again',
     });

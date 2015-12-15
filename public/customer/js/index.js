@@ -32236,8 +32236,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          routeComponent
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'small-12' },
+	            routeComponent
+	          )
 	        )
 	      );
 	    }
